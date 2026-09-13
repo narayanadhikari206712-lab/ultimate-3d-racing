@@ -1,22 +1,203 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Racing Game</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Three.js Library -->
-    <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Ultimate 3D Racing</title>
+
+  <!-- Game CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.min.js"></script>
 </head>
+
 <body>
-    <div id="game-container"></div>
-    <div id="instructions">
-        <h2>🎮 Controls:</h2>
-        <p>⬅️ Turn Left: Left Arrow or A</p>
-        <p>➡️ Right Turn: Right Arrow or D</p>
+
+  <!-- ==============================
+       GAME
+  =============================== -->
+
+  <div id="gameContainer"></div>
+
+
+  <!-- ==============================
+       MAIN MENU
+  =============================== -->
+
+  <div id="mainMenu" class="screen">
+
+    <div class="logo">
+      <div class="logo-small">ULTIMATE</div>
+      <div class="logo-big">3D RACING</div>
     </div>
 
-    <!-- Script File Name Matched to game.js -->
-    <script src="game.js"></script>
-</body>
-</html>
+    <div class="menu">
+
+      <button id="startBtn" class="btn primary">
+        🏁 START RACE
+      </button>
+
+      <button id="garageBtn" class="btn">
+        🚗 GARAGE
+      </button>
+
+      <button id="settingsBtn" class="btn">
+        ⚙️ SETTINGS
+      </button>
+
+    </div>
+
+    <div class="footer">
+      🏆 Best Score:
+      <b id="menuBestScore">0</b>
+
+      &nbsp;&nbsp;
+
+      🪙 Coins:
+      <b id="menuCoins">0</b>
+    </div>
+
+  </div>
+
+
+  <!-- ==============================
+       LOADING SCREEN
+  =============================== -->
+
+  <div id="loadingScreen" class="screen hidden">
+
+    <div class="loadingBox">
+
+      <h1>🏎️ ULTIMATE 3D RACING</h1>
+
+      <p id="loadingText">
+        Loading...
+      </p>
+
+      <div class="loadingBar">
+        <div id="loadingFill"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==============================
+       HUD
+  =============================== -->
+
+  <div id="hud" class="hidden">
+
+    <!-- Position -->
+
+    <div class="hud-left">
+
+      <div class="hud-box">
+
+        <small>POSITION</small>
+
+        <strong id="position">
+          1
+        </strong>
+
+        <span>/ 6</span>
+
+      </div>
+
+
+      <!-- Lap -->
+
+      <div class="hud-box">
+
+        <small>LAP</small>
+
+        <strong id="lap">
+          1
+        </strong>
+
+        <span>/ 3</span>
+
+      </div>
+
+    </div>
+
+
+    <!-- Timer -->
+
+    <div id="raceTimer">
+      00:00
+    </div>
+
+
+    <!-- Right HUD -->
+
+    <div class="hud-right">
+
+      <div class="coins">
+        🪙
+        <span id="coins">0</span>
+      </div>
+
+      <button
+        id="pauseBtn"
+        class="pauseButton"
+      >
+        ⏸
+      </button>
+
+    </div>
+
+
+    <!-- Speedometer -->
+
+    <div id="speedometer">
+
+      <div class="speedNumber">
+
+        <span id="speed">
+          0
+        </span>
+
+        <small>
+          KM/H
+        </small>
+
+      </div>
+
+      <div class="speedBar">
+
+        <div id="speedFill"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Nitro -->
+
+    <div id="nitroContainer">
+
+      <div class="nitroTitle">
+        ⚡ NITRO
+      </div>
+
+      <div class="nitroBar">
+
+        <div id="nitroFill"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Countdown -->
+
+    <div
+      id="
